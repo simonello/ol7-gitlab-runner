@@ -2,11 +2,11 @@ version: '3'
 services:
   gitlab-runner:
     hostname: runner1
-    image: 'simonello/ol7-gitlab-runner:1.2'
+    image: 'simonello/ol7-gitlab-runner:latest'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./config:/etc/gitlab-runner
-      - ../entrypoint:/entrypoint
+      - ./entrypoint:/entrypoint
     deploy:
       resources:
         limits:
@@ -16,5 +16,4 @@ services:
           cpus: '1.00'
           memory: 4G
 
-#   command: /etc/init.d/gitlab-runner start
     restart: unless-stopped

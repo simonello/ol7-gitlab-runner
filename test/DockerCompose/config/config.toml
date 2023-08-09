@@ -7,9 +7,9 @@ shutdown_timeout = 0
 
 [[runners]]
   name = "runner1"
-  url = "http://gitlab.containersuat.moorecap.com:9080"
+  url = "http://blah.blah.blah.blah:9080"
   id = 1
-  token = "tAR3AgWpcjAAfnUGcys3"
+  token = "tblahblablablablablah"
   token_obtained_at = 2023-07-25T10:36:29Z
   token_expires_at = 0001-01-01T00:00:00Z
   executor = "shell"
