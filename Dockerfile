@@ -12,8 +12,7 @@ COPY ./etc/yum.repos.d/oracle-developer-ol7.repo /etc/yum.repos.d/oracle-develop
 COPY ./etc/yum.repos.d/oracle-epel-ol7.repo /etc/yum.repos.d/oracle-epel-ol7.repo
 COPY ./etc/yum.repos.d/oracle-linux-ol7.repo /etc/yum.repos.d/oracle-linux-ol7.repo
 COPY ./etc/yum.repos.d/oracle-softwarecollection-ol8.repo /etc/yum.repos.d/oracle-softwarecollection-ol8.repo
-COPY ./etc/yum.repos.d/runner_gitlab-runner.repo /etc/yum.repos.d/runner_gitlab-runner.repo
-COPY ./bin/gitlab-runner /usr/local/bin/gitlab-runner
+COPY ./bin/gitlab-runner-linux-amd64 /usr/local/bin/gitlab-runner
 COPY ./requirements.txt /requirements.txt
 COPY ./entrypoint /entrypoint
 

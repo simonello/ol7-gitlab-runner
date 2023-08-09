@@ -1,4 +1,4 @@
-IMAGE_VERSION = 1.2
+IMAGE_VERSION = 1.3
 PUBLISHER = simonello
 OS = linux
 ARCH = amd64
