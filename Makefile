@@ -22,7 +22,7 @@ clean_images:
 	docker rmi $(PUBLISHER)/$(PROJECT):latest
 
 build :
-	docker build --no-cache -t $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION) . 
+	docker build --no-cache -t $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION) --ulimit nofile=1024000:1024000  . 
 
 tag:
 	docker image tag $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION) $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION)
@@ -31,3 +31,5 @@ tag:
 push:
 	docker push $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION)
 	docker push $(PUBLISHER)/$(PROJECT):latest
+
+
