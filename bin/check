@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# Compare checksums.
+#
+if [ ! -f release.sha256 ]
+	then
+		rm release.sha256
+		wget https://gitlab-runner-downloads.s3.amazonaws.com/latest/release.sha256
+	fi
+
+CALCULATED=$(sha256sum gitlab-runner-linux-amd64| awk '{print $1}')
+ACTUAL=$(grep "gitlab-runner-linux-amd64$" release.sha256| awk '{print $1}')
+
+if [ "$CALCULATED" = "$ACTUAL" ]
+	then
+		echo "checksum matches";
+		exit 0;
+	else
+		echo "checksum don't matches";
+		exit 1
+	fi
+

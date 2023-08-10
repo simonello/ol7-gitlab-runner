@@ -11,7 +11,10 @@ clean: clean_image clean_images
 
 .SILENT:
 download:
-	if [ ! -f bin/gitlab-runner-${OS}-${ARCH} ]; then cd bin && curl -LJO "${URL}/gitlab-runner-${OS}-${ARCH}"; else echo "gitlab-runner-${OS}-${ARCH} already downloaded"; fi;
+	if [ ! -f bin/gitlab-runner-${OS}-${ARCH} ]; then \
+	cd bin && curl -LJO ${URL}/binaries/gitlab-runner-${OS}-${ARCH} && ./check; \
+       	else \
+       	echo "gitlab-runner-${OS}-${ARCH} already downloaded"; fi;
 
 clean_image:
 	docker image rm $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION) -f
@@ -22,7 +25,12 @@ clean_images:
 	docker rmi $(PUBLISHER)/$(PROJECT):latest
 
 build :
+<<<<<<< HEAD
 	docker build --no-cache -t $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION) --ulimit nofile=1024000:1024000  . 
+=======
+	docker build --no-cache -t $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION) --ulimit nofile=1024000:1024000  .
+
+>>>>>>> 62ffc34 (add checksum tests for security.)
 
 tag:
 	docker image tag $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION) $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION)
