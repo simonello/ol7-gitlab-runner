@@ -25,12 +25,7 @@ clean_images:
 	docker rmi $(PUBLISHER)/$(PROJECT):latest
 
 build :
-<<<<<<< HEAD
 	docker build --no-cache -t $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION) --ulimit nofile=1024000:1024000  . 
-=======
-	docker build --no-cache -t $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION) --ulimit nofile=1024000:1024000  .
-
->>>>>>> 62ffc34 (add checksum tests for security.)
 
 tag:
 	docker image tag $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION) $(PUBLISHER)/$(PROJECT):$(IMAGE_VERSION)
