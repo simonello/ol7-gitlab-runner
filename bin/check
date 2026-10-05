@@ -2,11 +2,9 @@
 #
 # Compare checksums.
 #
-if [ ! -f release.sha256 ]
-	then
-		# rm release.sha256
-		wget https://gitlab-runner-downloads.s3.amazonaws.com/latest/release.sha256
-	fi
+# Always fetch the current manifest: the binary comes from "latest",
+# so a stale manifest would fail (or worse, validate the wrong thing).
+wget -q -O release.sha256 https://gitlab-runner-downloads.s3.amazonaws.com/latest/release.sha256
 
 CALCULATED=$(sha256sum gitlab-runner-linux-amd64| awk '{print $1}')
 ACTUAL=$(grep "gitlab-runner-linux-amd64$" release.sha256| awk '{print $1}')
@@ -16,7 +14,7 @@ if [ "$CALCULATED" = "$ACTUAL" ]
 		echo "checksum matches";
 		exit 0;
 	else
-		echo "checksum don't matches";
+		echo "checksum does not match";
 		exit 1;
 	fi
 

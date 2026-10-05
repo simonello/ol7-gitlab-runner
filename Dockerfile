@@ -19,6 +19,8 @@ COPY ./entrypoint /entrypoint
 RUN set -ex && \
    yum-config-manager --enable ol7_optional_latest && \
    yum -y update && \
-   yum -y install $(cat requirements.txt)
+   yum -y install $(cat requirements.txt) && \
+   chmod 0755 /usr/local/bin/gitlab-runner && \
+   useradd --create-home --shell /bin/bash gitlab-runner
 
 CMD ["/entrypoint"]
